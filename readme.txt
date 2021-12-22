@@ -1,0 +1,1 @@
+adresse sous forme de carte intéractive avec possibilité de géolocalisation un champ photo (caméra smartphone) les champs classiques (nom, prenom, adresse, cp, ville, email, téléphone)
