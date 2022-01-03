@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const geocoder = require('../utils/geocoder');
 
 // formulaire de signalement
 const alertSchema = new mongoose.Schema(
@@ -41,12 +42,17 @@ const alertSchema = new mongoose.Schema(
 			type: String,
 			required: true,	
 		},
-		// mapAdress:{
-		// 	lon: Number,
-		// 	lat: Number,
-		// },
-		// picture:{
-		// }
+		location:{
+		    type: {
+                type: String,
+		        enum: ['point']
+		    },
+		    coordinates: {
+			    type: [Number],
+			    index: '2dsphere'
+		    },
+		    formattedAddress: String,
+		}
 		// movie:{
 		// 	type: String,
 		// 	required: true,	
@@ -56,6 +62,20 @@ const alertSchema = new mongoose.Schema(
 		timestamps: true,
 	}
 );
+
+// Geocode & create location
+alertSchema.pre('save', async function (next) {
+	const loc = await geocoder.geocode(this.alertAdress);
+    this.location = {
+		type: 'Point',
+		coordinates: [loc[0].latitude, loc[0].longitude],
+		// formattedAddress: loc[0].formattedAddress
+	}
+	
+	this.alertAdress = undefined;
+	next();
+	console.log(loc);
+});
 
 const alertModel = mongoose.model('alert', alertSchema);
 module.exports = alertModel;
