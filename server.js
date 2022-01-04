@@ -3,9 +3,9 @@ const expess = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const connectDB = require('./app/config/dbConfig');
-const authRouter = require('./app/routes/authRouter');
-const alertRouter = require('./app/routes/alertRouter');
-const userRouter = require('./app/routes/userRouter');
+const authRouter = require('./routes/authRouter');
+const alertRouter = require('./routes/alertRouter');
+const userRouter = require('./routes/userRouter');
 
 
 const app = expess();
