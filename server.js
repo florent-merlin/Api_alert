@@ -2,7 +2,7 @@ require('dotenv').config();
 const expess = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const connectDB = require('./app/config/dbConfig');
+const connectDB = require('./config/dbConfig');
 const authRouter = require('./routes/authRouter');
 const alertRouter = require('./routes/alertRouter');
 const userRouter = require('./routes/userRouter');
