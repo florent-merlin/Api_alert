@@ -19,7 +19,7 @@ app.use('/', authRouter);
 app.use('/', alertRouter);
 app.use('/', userRouter);
 
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 3500;
 
 const start = async () => {
 	try {
