@@ -1,6 +1,7 @@
 const userModel = require('../models/userModel');
 const alertModel = require('../models/alertModel');
 const ObjectId = require('mongoose').Types.ObjectId;
+// mailler a faire pour envoyer 
 
 module.exports.createAlert = async (req, res) => {
 	const user = await userModel.findOne({ _id: req.params.id });

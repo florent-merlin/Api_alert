@@ -69,7 +69,7 @@ alertSchema.pre('save', async function (next) {
     this.location = {
 		type: 'Point',
 		coordinates: [loc[0].latitude, loc[0].longitude],
-		// formattedAddress: loc[0].formattedAddress
+		formattedAddress: loc[0].formattedAddress
 	}
 	
 	this.alertAdress = undefined;
